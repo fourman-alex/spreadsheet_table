@@ -44,16 +44,16 @@ class SpreadsheetTable extends StatefulWidget {
   final int rowsCount;
 
   /// Builder for the columns header. The first row.
-  final Widget Function(int index) colHeaderBuilder;
+  final Widget Function(BuildContext context, int index) colHeaderBuilder;
 
   /// Builder for the rows header. The first column.
-  final Widget Function(int index) rowHeaderBuilder;
+  final Widget Function(BuildContext context, int index) rowHeaderBuilder;
 
   /// Builder for the data cells.
-  final Widget Function(int row, int col) cellBuilder;
+  final Widget Function(BuildContext context, int row, int col) cellBuilder;
 
   /// Builder for the table legend. The top-left most cell.
-  final Widget Function() legendBuilder;
+  final Widget Function(BuildContext context) legendBuilder;
 
   @override
   _SpreadsheetTableState createState() => _SpreadsheetTableState();
@@ -79,7 +79,7 @@ class _SpreadsheetTableState extends State<SpreadsheetTable> {
             children: [
               SizedBox(
                 width: widget.rowHeaderWidth,
-                child: widget.legendBuilder(),
+                child: widget.legendBuilder(context),
               ),
               Expanded(
                 child: ListView.builder(
@@ -89,7 +89,7 @@ class _SpreadsheetTableState extends State<SpreadsheetTable> {
                   itemCount: widget.colCount,
                   itemBuilder: (context, index) => SizedBox(
                     width: widget.cellWidth,
-                    child: widget.colHeaderBuilder(index),
+                    child: widget.colHeaderBuilder(context, index),
                   ),
                 ),
               )
@@ -108,7 +108,7 @@ class _SpreadsheetTableState extends State<SpreadsheetTable> {
                   itemExtent: widget.cellHeight,
                   itemBuilder: (context, index) => SizedBox(
                     height: widget.cellHeight,
-                    child: widget.rowHeaderBuilder(index),
+                    child: widget.rowHeaderBuilder(context, index),
                   ),
                 ),
               ),
@@ -128,7 +128,7 @@ class _SpreadsheetTableState extends State<SpreadsheetTable> {
                             SizedBox(
                               width: widget.cellWidth,
                               height: widget.cellHeight,
-                              child: widget.cellBuilder(index, col),
+                              child: widget.cellBuilder(context, index, col),
                             )
                         ],
                       ),

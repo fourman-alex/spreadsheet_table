@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(),
         body: SpreadsheetTable(
-          cellBuilder: (int row, int col) =>
+          cellBuilder: (_, int row, int col) =>
               Center(child: Text('Cell $row/$col')),
-          legendBuilder: () => Center(child: Text('Legend')),
-          rowHeaderBuilder: (index) => Center(child: Text('Row $index')),
-          colHeaderBuilder: (index) => Center(child: Text('Col $index')),
+          legendBuilder: (_) => Center(child: Text('Legend')),
+          rowHeaderBuilder: (_, index) => Center(child: Text('Row $index')),
+          colHeaderBuilder: (_, index) => Center(child: Text('Col $index')),
           rowsCount: 100,
           colCount: 15,
         ),
