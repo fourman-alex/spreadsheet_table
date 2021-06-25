@@ -23,6 +23,9 @@ SpreadsheetTable(
 )
 ```
 
+## Preview
+![preview](preview.gif)
+
 ## Flutter Web
 When building for web prefer `canvaskit` as the performance of the table will be better.  
 Use `flutter build web --web-renderer canvaskit --release` when releasing to production 
