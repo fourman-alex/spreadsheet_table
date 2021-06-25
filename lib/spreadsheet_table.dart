@@ -7,10 +7,10 @@ class SpreadsheetTable extends StatefulWidget {
   /// Create a [SpreadsheetTable]
   const SpreadsheetTable({
     Key? key,
-    required this.cellWidth,
-    required this.cellHeight,
-    required this.rowHeaderWidth,
-    required this.colsHeaderHeight,
+    this.cellWidth = 80,
+    this.cellHeight = 30,
+    this.rowHeaderWidth = 80,
+    this.colsHeaderHeight = 30,
     required this.colCount,
     required this.rowsCount,
     required this.colHeaderBuilder,
@@ -30,9 +30,11 @@ class SpreadsheetTable extends StatefulWidget {
   final double cellHeight;
 
   /// Width of the row header. The width of the first column.
+  /// Defaults to 80
   final double rowHeaderWidth;
 
   /// Height of the column header. The height of the first row.
+  /// Defaults to 30
   final double colsHeaderHeight;
 
   /// Number of data columns the [cellBuilder] will iterate over
